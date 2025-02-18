@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		B776F36D2D6523B100CC91BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B776F3512D6523B000CC91BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B776F3582D6523B000CC91BD;
+			remoteInfo = OllamaCompanion;
+		};
+		B776F3772D6523B100CC91BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B776F3512D6523B000CC91BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B776F3582D6523B000CC91BD;
+			remoteInfo = OllamaCompanion;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B776F3592D6523B000CC91BD /* OllamaCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OllamaCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B776F36C2D6523B100CC91BD /* OllamaCompanionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OllamaCompanionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B776F3762D6523B100CC91BD /* OllamaCompanionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OllamaCompanionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B776F35B2D6523B000CC91BD /* OllamaCompanion */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OllamaCompanion;
+			sourceTree = "<group>";
+		};
+		B776F36F2D6523B100CC91BD /* OllamaCompanionTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OllamaCompanionTests;
+			sourceTree = "<group>";
+		};
+		B776F3792D6523B100CC91BD /* OllamaCompanionUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OllamaCompanionUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B776F3562D6523B000CC91BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B776F3692D6523B100CC91BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B776F3732D6523B100CC91BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B776F3502D6523B000CC91BD = {
+			isa = PBXGroup;
+			children = (
+				B776F35B2D6523B000CC91BD /* OllamaCompanion */,
+				B776F36F2D6523B100CC91BD /* OllamaCompanionTests */,
+				B776F3792D6523B100CC91BD /* OllamaCompanionUITests */,
+				B776F35A2D6523B000CC91BD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B776F35A2D6523B000CC91BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B776F3592D6523B000CC91BD /* OllamaCompanion.app */,
+				B776F36C2D6523B100CC91BD /* OllamaCompanionTests.xctest */,
+				B776F3762D6523B100CC91BD /* OllamaCompanionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B776F3582D6523B000CC91BD /* OllamaCompanion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B776F3802D6523B100CC91BD /* Build configuration list for PBXNativeTarget "OllamaCompanion" */;
+			buildPhases = (
+				B776F3552D6523B000CC91BD /* Sources */,
+				B776F3562D6523B000CC91BD /* Frameworks */,
+				B776F3572D6523B000CC91BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B776F35B2D6523B000CC91BD /* OllamaCompanion */,
+			);
+			name = OllamaCompanion;
+			packageProductDependencies = (
+			);
+			productName = OllamaCompanion;
+			productReference = B776F3592D6523B000CC91BD /* OllamaCompanion.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B776F36B2D6523B100CC91BD /* OllamaCompanionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B776F3832D6523B100CC91BD /* Build configuration list for PBXNativeTarget "OllamaCompanionTests" */;
+			buildPhases = (
+				B776F3682D6523B100CC91BD /* Sources */,
+				B776F3692D6523B100CC91BD /* Frameworks */,
+				B776F36A2D6523B100CC91BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B776F36E2D6523B100CC91BD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B776F36F2D6523B100CC91BD /* OllamaCompanionTests */,
+			);
+			name = OllamaCompanionTests;
+			packageProductDependencies = (
+			);
+			productName = OllamaCompanionTests;
+			productReference = B776F36C2D6523B100CC91BD /* OllamaCompanionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B776F3752D6523B100CC91BD /* OllamaCompanionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B776F3862D6523B100CC91BD /* Build configuration list for PBXNativeTarget "OllamaCompanionUITests" */;
+			buildPhases = (
+				B776F3722D6523B100CC91BD /* Sources */,
+				B776F3732D6523B100CC91BD /* Frameworks */,
+				B776F3742D6523B100CC91BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B776F3782D6523B100CC91BD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B776F3792D6523B100CC91BD /* OllamaCompanionUITests */,
+			);
+			name = OllamaCompanionUITests;
+			packageProductDependencies = (
+			);
+			productName = OllamaCompanionUITests;
+			productReference = B776F3762D6523B100CC91BD /* OllamaCompanionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B776F3512D6523B000CC91BD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					B776F3582D6523B000CC91BD = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					B776F36B2D6523B100CC91BD = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = B776F3582D6523B000CC91BD;
+					};
+					B776F3752D6523B100CC91BD = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = B776F3582D6523B000CC91BD;
+					};
+				};
+			};
+			buildConfigurationList = B776F3542D6523B000CC91BD /* Build configuration list for PBXProject "OllamaCompanion" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B776F3502D6523B000CC91BD;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B776F35A2D6523B000CC91BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B776F3582D6523B000CC91BD /* OllamaCompanion */,
+				B776F36B2D6523B100CC91BD /* OllamaCompanionTests */,
+				B776F3752D6523B100CC91BD /* OllamaCompanionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B776F3572D6523B000CC91BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B776F36A2D6523B100CC91BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B776F3742D6523B100CC91BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B776F3552D6523B000CC91BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B776F3682D6523B100CC91BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B776F3722D6523B100CC91BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B776F36E2D6523B100CC91BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B776F3582D6523B000CC91BD /* OllamaCompanion */;
+			targetProxy = B776F36D2D6523B100CC91BD /* PBXContainerItemProxy */;
+		};
+		B776F3782D6523B100CC91BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B776F3582D6523B000CC91BD /* OllamaCompanion */;
+			targetProxy = B776F3772D6523B100CC91BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B776F37E2D6523B100CC91BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B776F37F2D6523B100CC91BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		B776F3812D6523B100CC91BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OllamaCompanion/OllamaCompanion.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"OllamaCompanion/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bene.OllamaCompanion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B776F3822D6523B100CC91BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OllamaCompanion/OllamaCompanion.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"OllamaCompanion/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bene.OllamaCompanion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B776F3842D6523B100CC91BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bene.OllamaCompanionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OllamaCompanion.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OllamaCompanion";
+			};
+			name = Debug;
+		};
+		B776F3852D6523B100CC91BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bene.OllamaCompanionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OllamaCompanion.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OllamaCompanion";
+			};
+			name = Release;
+		};
+		B776F3872D6523B100CC91BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bene.OllamaCompanionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = OllamaCompanion;
+			};
+			name = Debug;
+		};
+		B776F3882D6523B100CC91BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bene.OllamaCompanionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = OllamaCompanion;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B776F3542D6523B000CC91BD /* Build configuration list for PBXProject "OllamaCompanion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B776F37E2D6523B100CC91BD /* Debug */,
+				B776F37F2D6523B100CC91BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B776F3802D6523B100CC91BD /* Build configuration list for PBXNativeTarget "OllamaCompanion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B776F3812D6523B100CC91BD /* Debug */,
+				B776F3822D6523B100CC91BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B776F3832D6523B100CC91BD /* Build configuration list for PBXNativeTarget "OllamaCompanionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B776F3842D6523B100CC91BD /* Debug */,
+				B776F3852D6523B100CC91BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B776F3862D6523B100CC91BD /* Build configuration list for PBXNativeTarget "OllamaCompanionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B776F3872D6523B100CC91BD /* Debug */,
+				B776F3882D6523B100CC91BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B776F3512D6523B000CC91BD /* Project object */;
+}
