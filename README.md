@@ -2,6 +2,9 @@
 
 A native macOS application built with SwiftUI that provides a seamless interface for interacting with your local Ollama instance. This companion app makes it easy to manage and interact with your local large language models.
 
+![Screenshot of the chat interface](screenshots/OllamaCompanion.jpg)
+
+
 ## Features
 
 - 🚀 Native macOS app built with SwiftUI
@@ -72,14 +75,7 @@ OllamaCompanion/
 - Modern error handling
 - Performance optimizations
 
-## Testing
 
-The project includes:
-- Unit Tests
-- UI Tests
-- Integration Tests
-
-Run tests in Xcode using ⌘U
 
 ## Contributing
 
