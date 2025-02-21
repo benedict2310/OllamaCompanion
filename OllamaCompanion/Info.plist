@@ -17,5 +17,9 @@
             </dict>
         </dict>
     </dict>
+    <key>NSLocationDefaultAccuracyReduced</key>
+    <true/>
+    <key>NSLocationUsageDescription</key>
+    <string>Your location will be included in conversations to provide better context to the AI assistant.</string>
 </dict>
 </plist> 

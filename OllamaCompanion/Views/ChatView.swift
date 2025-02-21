@@ -7,6 +7,7 @@ struct ChatView: View {
     
     @StateObject private var viewModel = ChatViewModel()
     @State private var isSidebarVisible = true
+    @AppStorage("defaultModel") private var defaultModel: String = "llama2"
     
     // MARK: - Body
     
@@ -57,6 +58,17 @@ struct ChatView: View {
             }
         }
         .frame(minWidth: 400, minHeight: 600)
+        .task {
+            await viewModel.fetchModels()
+            if viewModel.selectedModel.isEmpty {
+                viewModel.selectedModel = defaultModel
+            }
+        }
+        .onChange(of: defaultModel) { _, newModel in
+            if viewModel.availableModels.contains(newModel) {
+                viewModel.selectedModel = newModel
+            }
+        }
     }
     
     // MARK: - Private Views
@@ -74,6 +86,11 @@ struct ChatView: View {
             }
             .frame(width: 200)
             .disabled(viewModel.availableModels.isEmpty)
+            .onChange(of: viewModel.selectedModel) { _, newModel in
+                if !viewModel.isProcessing {
+                    defaultModel = newModel
+                }
+            }
             
             Button {
                 Task {

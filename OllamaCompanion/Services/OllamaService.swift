@@ -1,5 +1,7 @@
 import Foundation
 import Network
+import SwiftUI
+import CoreLocation
 
 /// Custom error types for Ollama service
 enum OllamaError: LocalizedError {
@@ -35,39 +37,96 @@ enum OllamaError: LocalizedError {
 class OllamaService {
     // MARK: - Properties
     
-    private let baseURL = "http://localhost:11434/api"
     static let shared = OllamaService()
     private let monitor = NWPathMonitor(requiredInterfaceType: .loopback)
-    private let monitorQueue = DispatchQueue(label: "com.ollamacompanion.networkmonitor")
-    private let session: URLSession
+    private let monitorQueue = DispatchQueue(label: "com.ollamacompanion.networkMonitor")
+    private let locationManager = LocationManager()
+    
+    private var baseURL: String {
+        UserDefaults.standard.string(forKey: "ollamaAddress") ?? "http://localhost:11434"
+    }
     
     private init() {
-        let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest = 300
-        config.timeoutIntervalForResource = 300
-        config.waitsForConnectivity = true
-        config.shouldUseExtendedBackgroundIdleMode = true
-        
-        session = URLSession(configuration: config)
         setupNetworkMonitoring()
     }
     
     // MARK: - Public Methods
     
-    /// Sends a chat completion request to Ollama with streaming response
+    /// Fetches available models from Ollama
+    /// - Returns: Array of model names
+    func fetchAvailableModels() async throws -> [String] {
+        guard let url = URL(string: "\(baseURL)/api/tags") else {
+            throw URLError(.badURL)
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw OllamaError.invalidResponse
+        }
+        
+        switch httpResponse.statusCode {
+        case 200:
+            let response = try JSONDecoder().decode(ModelsResponse.self, from: data)
+            return response.models.map { $0.name }
+        case 404:
+            throw OllamaError.serverNotRunning
+        default:
+            throw OllamaError.invalidResponse
+        }
+    }
+    
+    /// Generates a chat completion using the specified model and messages
     /// - Parameters:
     ///   - messages: Array of previous messages for context
     ///   - model: The model to use for completion
     ///   - onUpdate: Callback for each chunk of the response
     func generateChatCompletion(messages: [Message], model: String, onUpdate: @escaping (String) -> Void) async throws {
-        guard let url = URL(string: "\(baseURL)/chat") else {
+        guard let url = URL(string: "\(baseURL)/api/chat") else {
             throw URLError(.badURL)
         }
         
         print("Generating chat completion with model: \(model)")
         
-        let chatMessages = messages.map { ChatMessage(role: $0.isUser ? "user" : "assistant", content: $0.content) }
-        let request = ChatRequest(model: model, messages: chatMessages, stream: true)
+        // Get settings
+        let temperature = UserDefaults.standard.double(forKey: "temperature")
+        let maxTokens = UserDefaults.standard.integer(forKey: "maxTokens")
+        let basePrompt = UserDefaults.standard.string(forKey: "basePrompt") ?? ""
+        let includeLocalTime = UserDefaults.standard.bool(forKey: "includeLocalTime")
+        let includeLocation = UserDefaults.standard.bool(forKey: "includeLocation")
+        
+        // Build system prompt with optional components
+        var systemPrompt = basePrompt
+        
+        if includeLocalTime {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            let localTime = dateFormatter.string(from: Date())
+            systemPrompt += "\nUser's local time: \(localTime)"
+        }
+        
+        if includeLocation, 
+           let location = locationManager.currentLocation,
+           let locationName = locationManager.locationName {
+            systemPrompt += "\nUser's location: \(locationName) (coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude))"
+        }
+        
+        // Create chat messages array with system prompt if available
+        var chatMessages = [ChatMessage]()
+        if !systemPrompt.isEmpty {
+            chatMessages.append(ChatMessage(role: "system", content: systemPrompt))
+        }
+        chatMessages.append(contentsOf: messages.map { ChatMessage(role: $0.isUser ? "user" : "assistant", content: $0.content) })
+        
+        let request = ChatRequest(
+            model: model,
+            messages: chatMessages,
+            stream: true,
+            options: ChatOptions(
+                temperature: temperature,
+                num_predict: maxTokens
+            )
+        )
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
@@ -77,102 +136,33 @@ class OllamaService {
         let jsonData = try JSONEncoder().encode(request)
         urlRequest.httpBody = jsonData
         
-        do {
-            let (bytes, response) = try await session.bytes(for: urlRequest)
-            
-            guard let httpResponse = response as? HTTPURLResponse else {
-                throw OllamaError.invalidResponse
-            }
-            
-            print("Response status code: \(httpResponse.statusCode)")
-            
-            if httpResponse.statusCode == 404 || httpResponse.statusCode == 503 {
-                throw OllamaError.serverNotRunning
-            }
-            
-            if httpResponse.statusCode != 200 {
-                throw OllamaError.connectionError
-            }
-            
-            var fullResponse = ""
-            
+        let (bytes, response) = try await URLSession.shared.bytes(for: urlRequest)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw OllamaError.invalidResponse
+        }
+        
+        switch httpResponse.statusCode {
+        case 200:
+            var responseText = ""
             for try await line in bytes.lines {
-                guard !line.isEmpty else { continue }
-                print("Received line: \(line)")  // Debug print
+                guard let data = line.data(using: .utf8),
+                      let response = try? JSONDecoder().decode(ChatStreamResponse.self, from: data)
+                else { continue }
                 
-                guard let data = line.data(using: .utf8) else {
-                    print("Could not convert line to data")
-                    continue
+                if let content = response.message?.content {
+                    responseText += content
+                    onUpdate(responseText)
                 }
                 
-                do {
-                    let streamResponse = try JSONDecoder().decode(ChatStreamResponse.self, from: data)
-                    
-                    if let content = streamResponse.message?.content {
-                        fullResponse += content
-                        print("Updating with content: \(fullResponse)")  // Debug print
-                        onUpdate(fullResponse)
-                    }
-                    
-                    if streamResponse.done {
-                        print("Stream completed")  // Debug print
-                        // Send final update
-                        onUpdate(fullResponse)
-                        break
-                    }
-                } catch {
-                    print("Error decoding stream response: \(error), line: \(line)")
-                    continue
+                if response.done {
+                    break
                 }
             }
-        } catch {
-            print("Connection error: \(error)")
-            if error is CancellationError || (error as NSError).code == NSURLErrorCancelled {
-                print("Request was cancelled")
-                return
-            }
-            throw OllamaError.connectionError
-        }
-    }
-    
-    /// Fetches available models from Ollama
-    /// - Returns: Array of model names
-    func fetchAvailableModels() async throws -> [String] {
-        guard let url = URL(string: "\(baseURL)/tags") else {
-            throw URLError(.badURL)
-        }
-        
-        print("Fetching models from: \(url.absoluteString)")
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.setValue("close", forHTTPHeaderField: "Connection")
-        
-        do {
-            let (data, urlResponse) = try await session.data(from: url)
-            
-            guard let httpResponse = urlResponse as? HTTPURLResponse else {
-                throw OllamaError.invalidResponse
-            }
-            
-            print("Response status code: \(httpResponse.statusCode)")
-            
-            if httpResponse.statusCode == 404 || httpResponse.statusCode == 503 {
-                throw OllamaError.serverNotRunning
-            }
-            
-            if httpResponse.statusCode != 200 {
-                throw OllamaError.connectionError
-            }
-            
-            let modelsResponse = try JSONDecoder().decode(ModelsResponse.self, from: data)
-            let models = modelsResponse.models.map { $0.name }
-            print("Found models: \(models)")
-            return models
-        } catch let error as OllamaError {
-            throw error
-        } catch {
-            print("Network error details: \(error)")
-            throw OllamaError.networkError(error)
+        case 404:
+            throw OllamaError.serverNotRunning
+        default:
+            throw OllamaError.invalidResponse
         }
     }
     
@@ -226,10 +216,16 @@ private struct ChatMessage: Codable {
     let content: String
 }
 
+private struct ChatOptions: Codable {
+    let temperature: Double
+    let num_predict: Int
+}
+
 private struct ChatRequest: Codable {
     let model: String
     let messages: [ChatMessage]
     let stream: Bool
+    let options: ChatOptions
 }
 
 private struct ChatStreamResponse: Codable {

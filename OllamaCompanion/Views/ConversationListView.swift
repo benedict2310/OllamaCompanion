@@ -5,6 +5,7 @@ struct ConversationListView: View {
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var chatViewModel: ChatViewModel
     @ObservedObject private var store = ConversationStore.shared
+    @State private var showSettings = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -13,6 +14,14 @@ struct ConversationListView: View {
                 Text("Conversations")
                     .font(.headline)
                 Spacer()
+                Button {
+                    showSettings = true
+                } label: {
+                    Image(systemName: "gear")
+                        .foregroundColor(.secondary)
+                }
+                .buttonStyle(.plain)
+                .help("Settings")
             }
             .padding(.horizontal)
             .padding(.vertical, 8)
@@ -61,6 +70,9 @@ struct ConversationListView: View {
         }
         .frame(width: 250)
         .background(Color(nsColor: colorScheme == .dark ? .windowBackgroundColor : .white))
+        .sheet(isPresented: $showSettings) {
+            SettingsView()
+        }
     }
 }
 
